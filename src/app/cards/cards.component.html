@@ -1,1 +1,7 @@
-<p>cards works!</p>
+<div class="cards">
+  @if (cards$ | async; as cards) {
+  <h1>Suas cartas do pacote aberto</h1>
+
+  <app-card-list [cards]="cards"></app-card-list>
+  }
+</div>

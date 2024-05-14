@@ -1,6 +1,6 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { Set } from '../../../shared';
+import { Set } from '../../shared';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
 

@@ -1,5 +1,5 @@
 @for (set of sets; track set) {
-<mat-card class="example-card" (click)="router.navigate(['cards', set.code])">
+<mat-card (click)="router.navigate(['cards', set.code])">
   <mat-card-header>
     <mat-card-title>{{ set.name }}</mat-card-title>
     <mat-card-subtitle>{{ set.block }}</mat-card-subtitle>

@@ -10,7 +10,7 @@ import { SetService } from './services/set.service';
 import { Set } from '../shared';
 import { Observable, tap } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { SetListComponent } from './list/set-list/set-list.component';
+import { SetListComponent } from './set-list/set-list.component';
 
 @Component({
   selector: 'app-home',

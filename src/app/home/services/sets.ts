@@ -1,6 +1,5 @@
-import { Set } from '../../shared';
 
-export const sets: Set[] = [
+export const sets: any[] = [
   {
     code: 'DGM',
     name: "Dragon's Maze",

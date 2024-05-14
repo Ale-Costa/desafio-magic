@@ -1,0 +1,17 @@
+@for (card of cards; track card) {
+<mat-card>
+  <span>{{ card.colorIdentity }}</span>
+  <div class="card-content">
+    <div class="card-img">
+      <img mat-card-md-image [src]="card.imageUrl" />
+    </div>
+    <div class="card-info">
+      <mat-card-title>{{ card.name }}</mat-card-title>
+      <mat-card-subtitle>{{ card.manaCost }}</mat-card-subtitle>
+      <p>
+        {{ card.text }}
+      </p>
+    </div>
+  </div>
+</mat-card>
+}

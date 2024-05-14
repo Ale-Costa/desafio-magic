@@ -1,0 +1,18 @@
+.cards {
+  border-radius: 5px;
+  border: solid 2px darkgray;
+  height: 90%;
+  overflow: auto;
+  padding: 2rem;
+  background-color: #fefefe;
+
+  h1 {
+    text-align: center;
+  }
+
+  app-card-list {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}

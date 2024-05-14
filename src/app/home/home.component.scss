@@ -1,45 +1,36 @@
-.list {
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem;
+  width: 50%;
+
+  mat-form-field {
+    width: 20rem;
+  }
+
+  .buscar {
+    border-radius: 5px;
+    height: 3rem;
+    width: 7rem;
+  }
+}
+
+h3 {
+  margin: 2rem;
+}
+
+.sets {
   border-radius: 5px;
   border: solid 2px darkgray;
-  margin: 3rem auto;
-  width: 70vw;
-  height: 90vh;
-  padding: 1rem;
+  height: 60%;
+  overflow: auto;
+  padding: 2rem;
+  background-color: #fefefe;
 
-  form {
+  app-set-list {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 2rem;
-    width: 50%;
-
-    mat-form-field {
-      width: 20rem;
-    }
-
-    .buscar {
-      border-radius: 5px;
-      height: 3rem;
-      width: 7rem;
-    }
-  }
-
-  h3 {
-    margin: 2rem;
-  }
-
-  .sets {
-    border-radius: 5px;
-    border: solid 2px darkgray;
-    height: 60%;
-    overflow: auto;
-    padding: 2rem;
-    background-color: #fefefe;
-
-    app-set-list {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 }

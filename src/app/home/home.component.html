@@ -1,44 +1,42 @@
-<div class="list">
-  <form [formGroup]="filtersForm" class="filter">
-    <mat-form-field class="example-form-field" appearance="outline">
-      <mat-label>Nome</mat-label>
-      <input matInput type="text" formControlName="name" />
-      @if (filtersForm.get('name')?.value) {
-      <button
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="filtersForm.get('name')?.reset()"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Bloco</mat-label>
-      <mat-select formControlName="block">
-        @for (block of blocks; track block) {
-        <mat-option [value]="block">{{ block }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+<form [formGroup]="filtersForm" class="filter">
+  <mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" formControlName="name" />
+    @if (filtersForm.get('name')?.value) {
     <button
-      mat-flat-button
-      color="primary"
-      class="buscar"
-      [disabled]="filtersForm.invalid"
-      (click)="buscarSets()"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="filtersForm.get('name')?.reset()"
     >
-      Buscar
+      <mat-icon>close</mat-icon>
     </button>
-  </form>
+    }
+  </mat-form-field>
 
-  @if (sets$ | async; as sets) {
-  <div class="sets">
-    <app-set-list [sets]="sets"></app-set-list>
-  </div>
-  }@else {
-  <h3>Realize uma pesquisa para visualizar os sets disponiveis.</h3>
-  }
+  <mat-form-field appearance="outline">
+    <mat-label>Bloco</mat-label>
+    <mat-select formControlName="block">
+      @for (block of blocks; track block) {
+      <mat-option [value]="block">{{ block }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="primary"
+    class="buscar"
+    [disabled]="filtersForm.invalid"
+    (click)="buscarSets()"
+  >
+    Buscar
+  </button>
+</form>
+
+@if (sets$ | async; as sets) {
+<div class="sets">
+  <app-set-list [sets]="sets"></app-set-list>
 </div>
+}@else {
+<h3>Realize uma pesquisa para visualizar os sets disponiveis.</h3>
+}
