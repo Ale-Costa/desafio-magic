@@ -1,3 +1,16 @@
 mat-card {
-  max-width: 25rem;
+  width: 30%;
+  border: solid 2px lightgray;
+  cursor: pointer;
+
+  mat-card-content {
+    display: flex;
+    flex-direction: row-reverse;
+
+    p {
+      border: solid 2px lightgray;
+      border-radius: 5px;
+      padding: 0.5rem;
+    }
+  }
 }

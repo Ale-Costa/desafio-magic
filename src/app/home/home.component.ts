@@ -7,8 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { CardSet } from '../shared';
-import { Observable } from 'rxjs';
+import { Set } from '../shared';
+import { Observable, tap } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { SetListComponent } from './list/set-list/set-list.component';
 
@@ -40,7 +40,7 @@ export class HomeComponent {
     }),
   });
 
-  sets$: Observable<CardSet[]>;
+  sets$: Observable<Set[]>;
 
   constructor(private readonly setService: SetService) {}
 

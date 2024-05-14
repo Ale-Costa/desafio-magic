@@ -34,8 +34,11 @@
     </button>
   </form>
 
+  @if (sets$ | async; as sets) {
   <div class="sets">
-    <pre>{{ sets$ | async | json }}</pre>
-    <app-set-list></app-set-list>
+    <app-set-list [sets]="sets"></app-set-list>
   </div>
+  }@else {
+  <h3>Realize uma pesquisa para visualizar os sets disponiveis.</h3>
+  }
 </div>

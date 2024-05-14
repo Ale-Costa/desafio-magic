@@ -1,9 +1,11 @@
-<mat-card class="example-card">
+@for (set of sets; track set) {
+<mat-card class="example-card" (click)="router.navigate(['cards', set.code])">
   <mat-card-header>
-    <mat-card-title>{{ cardSet.name }}</mat-card-title>
-    <mat-card-subtitle>{{ cardSet }}</mat-card-subtitle>
+    <mat-card-title>{{ set.name }}</mat-card-title>
+    <mat-card-subtitle>{{ set.block }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>This card indeterminates progress bar.</p>
+    <p>{{ set.releaseDate | date : "dd/MM/yyyy" }}</p>
   </mat-card-content>
 </mat-card>
+}

@@ -7,7 +7,7 @@ export const routes: Routes = [
       import('./home/home.component').then((c) => c.HomeComponent),
   },
   {
-    path: 'cards',
+    path: 'cards/:id',
     loadComponent: () =>
       import('./cards/cards.component').then((c) => c.CardsComponent),
   },

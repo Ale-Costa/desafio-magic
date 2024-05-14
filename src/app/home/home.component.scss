@@ -4,14 +4,14 @@
   margin: 3rem auto;
   width: 70vw;
   height: 90vh;
+  padding: 1rem;
 
   form {
     display: flex;
-    justify-content: space-between;
-    margin: 5%;
-    width: 50%;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: space-between;
+    margin: 2rem;
+    width: 50%;
 
     mat-form-field {
       width: 20rem;
@@ -19,17 +19,27 @@
 
     .buscar {
       border-radius: 5px;
-      width: 7rem;
       height: 3rem;
+      width: 7rem;
     }
   }
 
+  h3 {
+    margin: 2rem;
+  }
+
   .sets {
-    border: solid 2px darkgray;
     border-radius: 5px;
-    width: 90%;
-    margin: 5rem auto;
-    height: 50%;
+    border: solid 2px darkgray;
+    height: 60%;
+    overflow: auto;
     padding: 2rem;
+    background-color: #fefefe;
+
+    app-set-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
   }
 }
