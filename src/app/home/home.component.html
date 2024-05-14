@@ -33,10 +33,13 @@
   </button>
 </form>
 
-@if (sets$ | async; as sets) {
 <div class="sets">
+  @if (loading) {
+  <app-loading message="Buscando coleções"></app-loading>
+
+  } @if (sets$ | async; as sets) {
   <app-set-list [sets]="sets"></app-set-list>
+  } @else if (!loading) {
+  <h1>Realize uma pesquisa para visualizar as coleções disponiveis.</h1>
+  }
 </div>
-}@else {
-<h3>Realize uma pesquisa para visualizar os sets disponiveis.</h3>
-}

@@ -7,24 +7,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, finalize } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { SetListComponent } from './set-list/set-list.component';
 import { Set } from './interfaces/set';
+import { LoadingComponent } from '../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    MatInputModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatFormFieldModule,
     AsyncPipe,
     JsonPipe,
-    SetListComponent
+    LoadingComponent,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    SetListComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -42,11 +44,17 @@ export class HomeComponent {
 
   sets$: Observable<Set[]>;
 
+  loading = false;
+
   constructor(private readonly setService: SetService) {}
 
   buscarSets(): void {
+    this.loading = true;
+
     const { name, block } = this.filtersForm.getRawValue();
 
-    this.sets$ = this.setService.getSets({ name, block });
+    this.sets$ = this.setService
+      .getSets({ name, block })
+      .pipe(finalize(() => (this.loading = false)));
   }
 }

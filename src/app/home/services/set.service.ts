@@ -20,7 +20,7 @@ export class SetService {
       params.name = name;
     }
 
-    return of(sets).pipe(delay(2000));
+    return of(sets).pipe(delay(10000));
 
     // return this.http.get<{sets:Set[]}>(`${this.url}/sets`, {
     //   params,

@@ -28,6 +28,12 @@ h3 {
   padding: 2rem;
   background-color: #f5f5f5;
 
+  app-loading {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+
   app-set-list {
     display: grid;
     gap: 2rem;
