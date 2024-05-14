@@ -4,15 +4,15 @@
   height: 90%;
   overflow: auto;
   padding: 2rem;
-  background-color: #fefefe;
+  background-color: #f5f5f5;
 
   h1 {
     text-align: center;
   }
 
   app-card-list {
-    display: flex;
+    display: grid;
     gap: 2rem;
-    flex-wrap: wrap;
+    grid-template-columns: 32% 32% 32%;
   }
 }

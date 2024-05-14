@@ -1,5 +1,5 @@
 mat-card {
-  width: 30%;
+  width: 100%;
   border: solid 2px lightgray;
   padding: 1rem 1rem 2.5rem 1rem;
 
@@ -27,5 +27,8 @@ mat-card {
 
   .card-info {
     width: 60%;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
   }
 }

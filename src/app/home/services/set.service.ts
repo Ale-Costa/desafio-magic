@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Set } from '../../shared';
 import { Observable, map, of, delay } from 'rxjs';
 import { sets } from './sets';
+import { Set } from '../interfaces/set';
 
 @Injectable({
   providedIn: 'root',

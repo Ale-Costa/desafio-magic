@@ -7,10 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { Set } from '../shared';
 import { Observable, tap } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { SetListComponent } from './set-list/set-list.component';
+import { Set } from './interfaces/set';
 
 @Component({
   selector: 'app-home',
