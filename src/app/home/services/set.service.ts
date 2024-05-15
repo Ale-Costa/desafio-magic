@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, of, delay, filter } from 'rxjs';
-import { sets } from './sets';
+import { Observable, map } from 'rxjs';
 import { Set } from '../interfaces/set';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class SetService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getSets(filters: { name?: string; block: string }): Observable<Set[]> {
+  buscarSets(filters: { name?: string; block: string }): Observable<Set[]> {
     const { name, block } = filters;
     const params: { name?: string; block: string } = { block };
 
@@ -20,14 +19,10 @@ export class SetService {
       params.name = name;
     }
 
-    // return of(sets).pipe(delay(10000));
-
     return this.http
       .get<{ sets: Set[] }>(`${this.url}/sets`, {
         params,
       })
-      .pipe(
-        map((res) => res.sets),
-      );
+      .pipe(map((res) => res.sets));
   }
 }

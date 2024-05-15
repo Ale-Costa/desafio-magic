@@ -45,7 +45,7 @@ export class CardsComponent implements OnInit {
     const id = this.buscarId();
 
     return this.boosterService
-      .getCards(id)
+      .buscarCards(id)
       .pipe(
         map((cards) => cards.filter((card) => card.types.includes('Creature')))
       );

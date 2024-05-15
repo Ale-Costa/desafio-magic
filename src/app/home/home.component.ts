@@ -54,7 +54,7 @@ export class HomeComponent {
     const { name, block } = this.filtersForm.getRawValue();
 
     this.sets$ = this.setService
-      .getSets({ name, block })
+      .buscarSets({ name, block })
       .pipe(finalize(() => (this.loading = false)));
   }
 }
