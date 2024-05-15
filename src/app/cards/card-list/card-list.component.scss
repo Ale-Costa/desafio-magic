@@ -1,3 +1,33 @@
+.remover-cards {
+  background-color: white;
+  border-radius: 5px;
+  border: solid 2px darkgrey;
+  height: 8rem;
+  width: 18rem;
+  position: fixed;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+
+  .content {
+    h3 {
+      font-weight: bold;
+    }
+  }
+
+  .botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+}
+
 mat-card {
   width: 100%;
   border: solid 2px lightgray;
@@ -5,7 +35,9 @@ mat-card {
 
   .color-identity {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
     span {
       font-weight: bold;

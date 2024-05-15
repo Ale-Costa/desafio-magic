@@ -28,7 +28,16 @@ export class CardsComponent implements OnInit {
     this.buscarCartas();
   }
 
+  removerCards(cards: Card[]):void{
+    // console.log('remover', cards.length)
+    this.cardsValidos = this.cardsValidos.filter((card) => !cards.includes(card));
+    // console.log('cardsValidos', this.cardsValidos.length)
+
+    this.buscarCartas();
+  }
+
   private buscarCartas(): void {
+    // console.log('cards validos', this.cardsValidos.length);
     this.loading = true;
 
     this.buscarCartasValidas()
@@ -66,5 +75,7 @@ export class CardsComponent implements OnInit {
         ...cards.slice(0, remainingCards),
       ];
     }
+
+    console.log(this.cardsValidos);
   };
 }
