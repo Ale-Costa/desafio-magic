@@ -1,6 +1,12 @@
 @for (card of cards; track card) {
 <mat-card>
-  <span>{{ card.colorIdentity }}</span>
+  <div class="color-identity">
+    @if (colorIdentityImages[card.colorIdentity[0]]) {
+    <img mat-card-md-image [src]="colorIdentityImages[card.colorIdentity[0]]" />
+    }@else {
+    <span>{{ card.colorIdentity }}</span>
+    }
+  </div>
   <div class="card-content">
     <div class="card-img">
       <img mat-card-md-image [src]="card.imageUrl" />

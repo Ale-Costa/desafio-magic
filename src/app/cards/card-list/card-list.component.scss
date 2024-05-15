@@ -3,9 +3,18 @@ mat-card {
   border: solid 2px lightgray;
   padding: 1rem 1rem 2.5rem 1rem;
 
-  span {
-    text-align: end;
-    font-weight: bold;
+  .color-identity {
+    display: flex;
+    flex-direction: row-reverse;
+
+    span {
+      font-weight: bold;
+    }
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 
   .card-content {

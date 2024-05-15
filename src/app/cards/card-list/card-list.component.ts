@@ -13,4 +13,13 @@ import { MatCardModule } from '@angular/material/card';
 export class CardListComponent {
   @Input()
   cards: Card[]
+
+  colorIdentityImages: { [key: string]: string } = {
+    U: '../../../assets/img/U.webp',
+    B: '../../../assets/img/B.png',
+    R: '../../../assets/img/R.webp',
+    G: '../../../assets/img/G.png',
+  };
+
+
 }
