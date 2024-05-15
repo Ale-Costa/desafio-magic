@@ -8,13 +8,18 @@ import { AsyncPipe } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { MatIconModule } from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [AsyncPipe, CardListComponent, LoadingComponent, MatIconModule, MatTooltipModule],
+  imports: [
+    AsyncPipe,
+    CardListComponent,
+    LoadingComponent,
+    MatIconModule,
+    MatTooltipModule,
+  ],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss',
 })
@@ -39,8 +44,6 @@ export class CardsComponent implements OnInit {
     this.buscarCartas();
   }
 
-
-
   private buscarCartas(): void {
     this.loading = true;
 
@@ -59,7 +62,12 @@ export class CardsComponent implements OnInit {
     return this.boosterService
       .buscarCards(id)
       .pipe(
-        map((cards) => cards.filter((card) => card.types.includes('Creature')))
+        map((cards) =>
+          cards.filter(
+            (card) =>
+              card.types.includes('Creature') && !!card.colorIdentity?.length
+          )
+        )
       );
   }
 

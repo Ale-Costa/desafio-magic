@@ -28,7 +28,7 @@
       (change)="alterarSelecao($event, card)"
     ></mat-checkbox>
 
-    @if (!!colorIdentityImages[card.colorIdentity[0]]) {
+    @if (colorIdentityImages[card.colorIdentity[0]]) {
     <img mat-card-md-image [src]="colorIdentityImages[card.colorIdentity[0]]" />
     }@else {
     <span>{{ card.colorIdentity }}</span>
