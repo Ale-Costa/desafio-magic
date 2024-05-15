@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { Observable, tap, finalize } from 'rxjs';
+import { Observable, finalize, filter, map } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { SetListComponent } from './set-list/set-list.component';
 import { Set } from './interfaces/set';
@@ -51,12 +51,12 @@ export class HomeComponent {
   buscarSets(): void {
     this.loading = true;
 
+    const regex = /^[^\d]{0,3}$/;
     const { name, block } = this.filtersForm.getRawValue();
 
-    this.sets$ = this.setService
-      .buscarSets({ name, block })
-      .pipe(
-        tap(()=> console.log('aqui')),
-        finalize(() => (this.loading = false)));
+    this.sets$ = this.setService.buscarSets({ name, block }).pipe(
+      map((sets) => sets.filter((set) => regex.test(set.code))),
+      finalize(() => (this.loading = false))
+    );
   }
 }

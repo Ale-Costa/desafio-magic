@@ -109,4 +109,22 @@ describe('CardsComponent', () => {
       });
     });
   });
+
+  describe('removerCards', () => {
+    it('Deve remover os cards selecionados', () => {
+      component.cardsValidos = [
+        { id: '1', name: 'test1', types: ['Creature'] } as Card,
+        { id: '2', name: 'test2', types: ['Creature'] } as Card,
+        { id: '3', name: 'test3', types: ['Creature'] } as Card,
+      ];
+      const cardsRemovidos = [
+        { id: '1', name: 'test1', types: ['Creature'] },
+        { id: '3', name: 'test3', types: ['Creature'] },
+      ] as Card[];
+      component.removerCards(cardsRemovidos);
+
+      expect(boosterServiceMock.buscarCards).toHaveBeenCalledWith('1');
+      expect(component.cardsValidos.length).toBe(1);
+    });
+  });
 });

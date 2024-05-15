@@ -1,3 +1,18 @@
+.mat-icon {
+  justify-content: center;
+  position: fixed;
+  top: 0.5rem;
+  color: white;
+  border: solid 2px white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  margin: auto;
+  cursor: pointer;
+  align-items: center;
+}
+
 .cards {
   border-radius: 5px;
   border: solid 2px darkgray;

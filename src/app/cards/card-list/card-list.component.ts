@@ -5,13 +5,12 @@ import {
   MatCheckboxChange,
   MatCheckboxModule,
 } from '@angular/material/checkbox';
-import { JsonPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-card-list',
   standalone: true,
-  imports: [MatCardModule, MatCheckboxModule, JsonPipe, MatButtonModule],
+  imports: [MatCardModule, MatCheckboxModule, MatButtonModule],
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
 })
@@ -44,7 +43,7 @@ export class CardListComponent {
   }
 
   removerCards() {
-    this.buscarNovosCards.emit(this.cardsSelecionados)
+    this.buscarNovosCards.emit(this.cardsSelecionados);
     this.cardsSelecionados = [];
   }
 

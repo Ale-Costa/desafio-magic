@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Card } from './interfaces/card';
 import { Observable, finalize, map, repeat, takeWhile } from 'rxjs';
@@ -7,11 +7,14 @@ import { BoosterService } from './services/booster.service';
 import { AsyncPipe } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [AsyncPipe, CardListComponent, LoadingComponent],
+  imports: [AsyncPipe, CardListComponent, LoadingComponent, MatIconModule, MatTooltipModule],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss',
 })
@@ -20,6 +23,7 @@ export class CardsComponent implements OnInit {
   cardsValidos: Card[] = [];
 
   constructor(
+    readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly boosterService: BoosterService
   ) {}
@@ -28,16 +32,16 @@ export class CardsComponent implements OnInit {
     this.buscarCartas();
   }
 
-  removerCards(cards: Card[]):void{
-    // console.log('remover', cards.length)
-    this.cardsValidos = this.cardsValidos.filter((card) => !cards.includes(card));
-    // console.log('cardsValidos', this.cardsValidos.length)
-
+  removerCards(cardsRemovidos: Card[]): void {
+    this.cardsValidos = this.cardsValidos.filter((card) => {
+      return !cardsRemovidos.some((removedCard) => removedCard.id === card.id);
+    });
     this.buscarCartas();
   }
 
+
+
   private buscarCartas(): void {
-    // console.log('cards validos', this.cardsValidos.length);
     this.loading = true;
 
     this.buscarCartasValidas()
@@ -50,7 +54,6 @@ export class CardsComponent implements OnInit {
   }
 
   private buscarCartasValidas(): Observable<Card[]> {
-    this.loading = true;
     const id = this.buscarId();
 
     return this.boosterService
@@ -75,7 +78,5 @@ export class CardsComponent implements OnInit {
         ...cards.slice(0, remainingCards),
       ];
     }
-
-    console.log(this.cardsValidos);
   };
 }
