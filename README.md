@@ -1,4 +1,12 @@
-# DesafioLinked
+# Considerações
+
+## Realizei algumas alterações não previstas, segue mais detalhes:
+
+1.  Tive um problema com alguns sets onde ao buscar as coleções retornava erro. Reparei que o erro ocorria quando o code do set havia 4 dígitos ou algum número, li a documentação e não encontrei nada referente a isso e tambem pode ter sido algum erro meu que não consegui identificar. Como a api não esta retornando outro identificador alem do code, decidi fazer uma filtragem e só listar os sets que estão funcionando corretamente.
+
+2.  Além da filtragem por type Creature, adicionei uma filtragem por colorIdentity, alguns cards estavam vindo sem essa informação, para melhorar a visualização do desafio desconsiderei os cards que não possuem esse atributo.
+
+# Desafio Magic: The Gathering
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
