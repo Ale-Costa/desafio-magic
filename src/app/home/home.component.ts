@@ -7,11 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { Observable, finalize, filter, map } from 'rxjs';
+import { Observable, finalize, filter, map, catchError, EMPTY } from 'rxjs';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { SetListComponent } from './set-list/set-list.component';
 import { Set } from './interfaces/set';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +47,10 @@ export class HomeComponent {
 
   loading = false;
 
-  constructor(private readonly setService: SetService) {}
+  constructor(
+    private readonly setService: SetService,
+    private readonly matSnackBar: MatSnackBar
+  ) {}
 
   buscarSets(): void {
     this.loading = true;
@@ -56,7 +60,14 @@ export class HomeComponent {
 
     this.sets$ = this.setService.buscarSets({ name, block }).pipe(
       map((sets) => sets.filter((set) => regex.test(set.code))),
-      finalize(() => (this.loading = false))
+      finalize(() => (this.loading = false)),
+      catchError((err) => {
+        this.matSnackBar.open(err.error, 'Ok', {
+          duration: 5000,
+          horizontalPosition: 'left',
+        });
+        return EMPTY;
+      })
     );
   }
 }

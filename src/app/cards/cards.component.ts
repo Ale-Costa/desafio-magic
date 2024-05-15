@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Card } from './interfaces/card';
-import { Observable, finalize, map, repeat, takeWhile } from 'rxjs';
+import { Observable, catchError, finalize, map, repeat, takeWhile } from 'rxjs';
 import { BoosterService } from './services/booster.service';
 import { AsyncPipe } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cards',
@@ -30,7 +31,8 @@ export class CardsComponent implements OnInit {
   constructor(
     readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly boosterService: BoosterService
+    private readonly boosterService: BoosterService,
+    private readonly matSnackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +55,15 @@ export class CardsComponent implements OnInit {
         takeWhile(() => this.cardsValidos.length < 30),
         finalize(() => (this.loading = false))
       )
-      .subscribe(this.gerenciarCards);
+      .subscribe({
+        next: this.gerenciarCards,
+        error: (err) => {
+          this.matSnackBar.open(err.message, 'Ok', {
+            duration: 5000,
+            horizontalPosition: 'left',
+          });
+        },
+      });
   }
 
   private buscarCartasValidas(): Observable<Card[]> {
