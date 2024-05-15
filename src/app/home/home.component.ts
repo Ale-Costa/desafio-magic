@@ -7,8 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetService } from './services/set.service';
-import { Observable, finalize, filter, map, catchError, EMPTY } from 'rxjs';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Observable, finalize, map, catchError, EMPTY } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 import { SetListComponent } from './set-list/set-list.component';
 import { Set } from './interfaces/set';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
@@ -19,7 +19,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   standalone: true,
   imports: [
     AsyncPipe,
-    JsonPipe,
     LoadingComponent,
     MatButtonModule,
     MatFormFieldModule,

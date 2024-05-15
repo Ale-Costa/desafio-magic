@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Card } from './interfaces/card';
-import { Observable, catchError, finalize, map, repeat, takeWhile } from 'rxjs';
+import { Observable, finalize, map, repeat, takeWhile } from 'rxjs';
 import { BoosterService } from './services/booster.service';
 import { AsyncPipe } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
@@ -15,7 +15,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'app-cards',
   standalone: true,
   imports: [
-    AsyncPipe,
     CardListComponent,
     LoadingComponent,
     MatIconModule,
@@ -36,20 +35,20 @@ export class CardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.buscarCartas();
+    this.buscarCards();
   }
 
   removerCards(cardsRemovidos: Card[]): void {
     this.cardsValidos = this.cardsValidos.filter((card) => {
-      return !cardsRemovidos.some((removedCard) => removedCard.id === card.id);
+      return !cardsRemovidos.some((cardRemovido) => cardRemovido.id === card.id);
     });
-    this.buscarCartas();
+    this.buscarCards();
   }
 
-  private buscarCartas(): void {
+  private buscarCards(): void {
     this.loading = true;
 
-    this.buscarCartasValidas()
+    this.buscarCardsValidos()
       .pipe(
         repeat(),
         takeWhile(() => this.cardsValidos.length < 30),
@@ -66,7 +65,7 @@ export class CardsComponent implements OnInit {
       });
   }
 
-  private buscarCartasValidas(): Observable<Card[]> {
+  private buscarCardsValidos(): Observable<Card[]> {
     const id = this.buscarId();
 
     return this.boosterService
