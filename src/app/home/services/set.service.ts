@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, of, delay } from 'rxjs';
+import { Observable, map, of, delay, filter } from 'rxjs';
 import { sets } from './sets';
 import { Set } from '../interfaces/set';
 
@@ -20,10 +20,14 @@ export class SetService {
       params.name = name;
     }
 
-    return of(sets).pipe(delay(10000));
+    // return of(sets).pipe(delay(10000));
 
-    // return this.http.get<{sets:Set[]}>(`${this.url}/sets`, {
-    //   params,
-    // }).pipe(map( res => res.sets));
+    return this.http
+      .get<{ sets: Set[] }>(`${this.url}/sets`, {
+        params,
+      })
+      .pipe(
+        map((res) => res.sets),
+      );
   }
 }

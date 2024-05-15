@@ -1,9 +1,10 @@
 <div class="cards">
   @if (loading) {
   <app-loading message="Abrindo os seus boosters"></app-loading>
-  } @if (cards$ | async; as cards) {
-  <h1>Suas cartas do pacote aberto</h1>
+  } @if (cardsValidos.length >= 30 && !loading) {
 
-  <app-card-list [cards]="cards"></app-card-list>
+  <h1>Suas cartas do pacote aberto</h1>
+  <app-card-list [cards]="cardsValidos"></app-card-list>
+
   }
 </div>

@@ -13,9 +13,9 @@ export class BoosterService {
   constructor(private readonly http: HttpClient) {}
 
   getCards(id: string): Observable<Card[]> {
-    return of(cards).pipe(delay(10000))
-    // return this.http
-    //   .get<{ cards: Card[] }>(`${this.url}/sets/${id}/booster`)
-    //   .pipe(map((res) => res.cards));
+    // return of(cards).pipe(delay(10000))
+    return this.http
+      .get<{ cards: Card[] }>(`${this.url}/sets/${id}/booster`)
+      .pipe(map((res) => res.cards));
   }
 }

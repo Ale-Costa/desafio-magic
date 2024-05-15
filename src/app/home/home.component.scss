@@ -37,6 +37,7 @@ h3 {
   app-set-list {
     display: grid;
     gap: 2rem;
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    justify-content: space-evenly;
   }
 }

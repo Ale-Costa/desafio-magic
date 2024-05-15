@@ -1,8 +1,9 @@
 export interface Card {
-  name:          string;
-  manaCost:      string;
+  name: string;
+  manaCost: string;
   colorIdentity: string[];
-  text:          string;
-  imageUrl:      string;
-  id:            string;
+  text: string;
+  imageUrl: string;
+  id: string;
+  types: string[];
 }
