@@ -21,5 +21,4 @@ export class CardListComponent {
     G: '../../../assets/img/G.png',
   };
 
-
 }

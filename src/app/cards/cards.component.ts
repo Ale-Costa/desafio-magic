@@ -51,17 +51,20 @@ export class CardsComponent implements OnInit {
       );
   }
 
+  private buscarId(): string {
+    return this.route.snapshot.paramMap.get('id') || '';
+  }
+
   private gerenciarCards = (cards: Card[]): void => {
     const totalCards = this.cardsValidos.length + cards.length;
     if (totalCards <= 30) {
       this.cardsValidos = [...this.cardsValidos, ...cards];
     } else {
       const remainingCards = 30 - this.cardsValidos.length;
-      this.cardsValidos = [...this.cardsValidos, ...cards.slice(0, remainingCards)];
+      this.cardsValidos = [
+        ...this.cardsValidos,
+        ...cards.slice(0, remainingCards),
+      ];
     }
   };
-
-  private buscarId(): string {
-    return this.route.snapshot.paramMap.get('id') || '';
-  }
 }

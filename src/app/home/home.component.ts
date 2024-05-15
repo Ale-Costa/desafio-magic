@@ -35,7 +35,7 @@ export class HomeComponent {
   blocks: string[] = ['Amonkhet', 'Ixalan', 'Zendikar', 'Ravnica', 'Onslaught'];
 
   filtersForm = new FormGroup({
-    name: new FormControl<string | undefined>('', { nonNullable: true }),
+    name: new FormControl<string>('', { nonNullable: true }),
     block: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required],
@@ -55,6 +55,8 @@ export class HomeComponent {
 
     this.sets$ = this.setService
       .buscarSets({ name, block })
-      .pipe(finalize(() => (this.loading = false)));
+      .pipe(
+        tap(()=> console.log('aqui')),
+        finalize(() => (this.loading = false)));
   }
 }
