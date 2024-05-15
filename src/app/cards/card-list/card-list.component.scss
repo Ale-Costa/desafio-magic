@@ -39,6 +39,10 @@ mat-card {
     justify-content: space-between;
     align-items: center;
 
+    .limite-max {
+      pointer-events: none;
+    }
+
     span {
       font-weight: bold;
     }

@@ -21,12 +21,25 @@
 } @for (card of cards; track card) {
 <mat-card>
   <div class="color-identity">
-    <mat-checkbox
-      class="example-margin"
-      [disabled]="cardsSelecionados.length >= 5 && !isSelecionado(card)"
-      [checked]="isSelecionado(card)"
-      (change)="alterarSelecao($event, card)"
-    ></mat-checkbox>
+    <div
+      class="checkbox"
+      [matTooltip]="
+        cardsSelecionados.length + quantidadeDeCardsRemovidos >= 5 &&
+        !isSelecionado(card)
+          ? 'Você pode remover apenas 5 cartas por coleção'
+          : ''
+      "
+    >
+      <mat-checkbox
+        [ngClass]="{
+          'limite-max':
+            cardsSelecionados.length + quantidadeDeCardsRemovidos >= 5 &&
+            !isSelecionado(card)
+        }"
+        [checked]="isSelecionado(card)"
+        (change)="alterarSelecao($event, card)"
+      ></mat-checkbox>
+    </div>
 
     @if (colorIdentityImages[card.colorIdentity[0]]) {
     <img mat-card-md-image [src]="colorIdentityImages[card.colorIdentity[0]]" />

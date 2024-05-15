@@ -26,6 +26,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CardsComponent implements OnInit {
   loading = false;
   cardsValidos: Card[] = [];
+  quantidadeDeCardsRemovidos = 0;
+
 
   constructor(
     readonly router: Router,
@@ -39,6 +41,7 @@ export class CardsComponent implements OnInit {
   }
 
   removerCards(cardsRemovidos: Card[]): void {
+    this.quantidadeDeCardsRemovidos += cardsRemovidos.length;
     this.cardsValidos = this.cardsValidos.filter((card) => {
       return !cardsRemovidos.some((cardRemovido) => cardRemovido.id === card.id);
     });

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Card } from '../interfaces/card';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -6,11 +6,13 @@ import {
   MatCheckboxModule,
 } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-list',
   standalone: true,
-  imports: [MatCardModule, MatCheckboxModule, MatButtonModule],
+  imports: [MatCardModule, MatCheckboxModule, MatButtonModule, MatTooltipModule, CommonModule],
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
 })
@@ -20,6 +22,9 @@ export class CardListComponent {
 
   @Output()
   buscarNovosCards = new EventEmitter<Card[]>();
+
+  @Input()
+  quantidadeDeCardsRemovidos:number
 
   cardsSelecionados: Card[] = [];
 
