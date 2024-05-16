@@ -48,8 +48,8 @@ describe('CardsComponent', () => {
     describe('Quando retornar as cartas com sucesso', () => {
       it('Deve filtrar as cartas pelo type Creature', () => {
         buscarCards$.next([
-          { name: 'test', types: ['Creature'] },
-          { name: 'test2', types: ['Other'] },
+          { name: 'test', types: ['Creature'], colorIdentity: ['W'] },
+          { name: 'test2', types: ['Other'] , colorIdentity: ['W'] },
         ]);
         expect(component.loading).toBe(true);
         expect(component.cardsValidos.length).toBe(1);
@@ -97,9 +97,9 @@ describe('CardsComponent', () => {
 
       it('Nao deve renderizar as cartas ao usuario quando houver menos de 30 cartas', () => {
         buscarCards$.next([
-          { name: 'test1', types: ['Creature'] },
-          { name: 'test2', types: ['Creature'] },
-          { name: 'test3', types: ['Creature'] },
+          { name: 'test1', types: ['Creature'], colorIdentity: ['W'] },
+          { name: 'test2', types: ['Creature'], colorIdentity: [' W'] },
+          { name: 'test3', types: ['Creature'], colorIdentity: [' W'] },
         ]);
         fixture.detectChanges();
 
