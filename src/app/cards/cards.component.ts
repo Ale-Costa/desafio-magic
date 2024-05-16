@@ -4,7 +4,6 @@ import { OnInit } from '@angular/core';
 import { Card } from './interfaces/card';
 import { Observable, finalize, map, repeat, takeWhile } from 'rxjs';
 import { BoosterService } from './services/booster.service';
-import { AsyncPipe } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +27,6 @@ export class CardsComponent implements OnInit {
   cardsValidos: Card[] = [];
   quantidadeDeCardsRemovidos = 0;
 
-
   constructor(
     readonly router: Router,
     private readonly route: ActivatedRoute,
@@ -43,7 +41,9 @@ export class CardsComponent implements OnInit {
   removerCards(cardsRemovidos: Card[]): void {
     this.quantidadeDeCardsRemovidos += cardsRemovidos.length;
     this.cardsValidos = this.cardsValidos.filter((card) => {
-      return !cardsRemovidos.some((cardRemovido) => cardRemovido.id === card.id);
+      return !cardsRemovidos.some(
+        (cardRemovido) => cardRemovido.id === card.id
+      );
     });
     this.buscarCards();
   }

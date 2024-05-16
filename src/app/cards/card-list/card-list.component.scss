@@ -33,7 +33,7 @@ mat-card {
   border: solid 2px lightgray;
   padding: 1rem 1rem 2.5rem 1rem;
 
-  .color-identity {
+  .card-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -43,13 +43,20 @@ mat-card {
       pointer-events: none;
     }
 
-    span {
-      font-weight: bold;
-    }
+    .color-identity-images {
+      display: flex;
+      gap: 0.2rem;
 
-    img {
-      width: 1.5rem;
-      height: 1.5rem;
+      span {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
   }
 

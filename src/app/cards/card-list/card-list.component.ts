@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from '../interfaces/card';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -12,7 +12,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-card-list',
   standalone: true,
-  imports: [MatCardModule, MatCheckboxModule, MatButtonModule, MatTooltipModule, CommonModule],
+  imports: [
+    MatCardModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatTooltipModule,
+    CommonModule,
+  ],
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
 })
@@ -24,7 +30,7 @@ export class CardListComponent {
   buscarNovosCards = new EventEmitter<Card[]>();
 
   @Input()
-  quantidadeDeCardsRemovidos:number
+  quantidadeDeCardsRemovidos: number;
 
   cardsSelecionados: Card[] = [];
 
@@ -33,6 +39,7 @@ export class CardListComponent {
     B: '../../../assets/img/B.png',
     R: '../../../assets/img/R.webp',
     G: '../../../assets/img/G.png',
+    W: '../../../assets/img/W.webp',
   };
 
   alterarSelecao(change: MatCheckboxChange, card: Card) {

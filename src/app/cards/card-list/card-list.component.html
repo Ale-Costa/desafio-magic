@@ -20,7 +20,7 @@
 </div>
 } @for (card of cards; track card) {
 <mat-card>
-  <div class="color-identity">
+  <div class="card-header">
     <div
       class="checkbox"
       [matTooltip]="
@@ -41,11 +41,14 @@
       ></mat-checkbox>
     </div>
 
-    @if (colorIdentityImages[card.colorIdentity[0]]) {
-    <img mat-card-md-image [src]="colorIdentityImages[card.colorIdentity[0]]" />
-    }@else {
-    <span>{{ card.colorIdentity }}</span>
-    }
+    <div class="color-identity-images">
+      @for (colorIdentity of card.colorIdentity; track $index) { @if
+      (colorIdentityImages[colorIdentity]) {
+      <img mat-card-md-image [src]="colorIdentityImages[colorIdentity]" />
+      }@else {
+      <span>{{ colorIdentity }}</span>
+      } }
+    </div>
   </div>
   <div class="card-content">
     <div class="card-img">
