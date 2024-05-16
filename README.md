@@ -1,5 +1,13 @@
 # Considerações
 
+## Testes unitarios
+
+Utilize o comando `ng test` para rodar os testes unitarios.
+
+## Deploy
+
+Segue url onde foi feito o deploy da aplicação: `https://desafio-magic-7a0317498959.herokuapp.com/home`
+
 ## Realizei algumas alterações não previstas, segue mais detalhes:
 
 1.  Tive um problema com alguns sets onde ao buscar as coleções retornava erro. Reparei que o erro ocorria quando o code do set havia 4 dígitos ou algum número, li a documentação e não encontrei nada referente a isso e tambem pode ter sido algum erro meu que não consegui identificar. Como a api não esta retornando outro identificador alem do code, decidi fazer uma filtragem e só listar os sets que estão funcionando corretamente.
